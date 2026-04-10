@@ -7,47 +7,62 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {font-family: 'Segoe UI', sans-serif;}
-    .glass {background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);} 
+    .glass {background: rgba(255,255,255,0.08); backdrop-filter: blur(12px);} 
   </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
 
 <!-- Navbar -->
-<nav class="flex justify-between p-4 glass fixed w-full top-0 z-50">
-  <h1 class="text-xl font-bold">Adv. Sarthak Dutta</h1>
-  <div class="space-x-6">
+<nav class="flex justify-between items-center px-6 py-4 glass fixed w-full top-0 z-50">
+  <div class="flex items-center gap-3">
+    <img src="profile.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+    <h1 class="text-lg font-semibold">Adv. Sarthak Dutta</h1>
+  </div>
+  <div class="space-x-6 text-sm">
     <a href="#services">Services</a>
-    <a href="#chat">AI Chat</a>
-    <a href="#booking">Booking</a>
+    <a href="#consult">Consult</a>
   </div>
 </nav>
 
 <!-- Hero -->
-<section class="h-screen flex items-center justify-center text-center" style="background: url('profile.jpg') center/cover no-repeat;">
-  <div class="glass p-10 rounded-3xl">
-    <h2 class="text-5xl font-bold mb-4">Adv. Sarthak Dutta</h2>
-    <p class="mb-6 text-lg">Premium Legal Consultation</p>
+<section class="h-screen flex items-center px-10">
+  <div class="max-w-xl">
+    <h2 class="text-5xl font-bold mb-4">Legal Expertise You Can Trust</h2>
+    <p class="text-gray-300 mb-6">Premium legal consultation for serious matters</p>
+    <a href="#consult" class="bg-blue-600 px-6 py-3 rounded-xl hover:bg-blue-700 transition">Get Started</a>
   </div>
 </section>
 
 <!-- Services -->
-<section id="services" class="py-16 text-center">
+<section id="services" class="py-16 px-10">
   <h2 class="text-3xl font-bold mb-10">Services</h2>
-  <div class="grid md:grid-cols-3 gap-6 px-6">
-    <div class="glass p-6 rounded-2xl">Criminal Law</div>
-    <div class="glass p-6 rounded-2xl">Corporate Law</div>
-    <div class="glass p-6 rounded-2xl">Family Law</div>
-    <div class="glass p-6 rounded-2xl">Financial and Economic Crimes </div>
+  <div class="grid md:grid-cols-4 gap-6">
+    <div class="glass p-6 rounded-2xl hover:scale-105 transition">Criminal Law</div>
+    <div class="glass p-6 rounded-2xl hover:scale-105 transition">Corporate Law</div>
+    <div class="glass p-6 rounded-2xl hover:scale-105 transition">Family Law</div>
+    <div class="glass p-6 rounded-2xl hover:scale-105 transition">Financial Crimes</div>
   </div>
 </section>
 
-<!-- AI Chatbot -->
-<section id="chat" class="py-16 text-center">
-  <h2 class="text-3xl font-bold mb-6">AI Legal Assistant 🤖</h2>
-  <div class="max-w-xl mx-auto">
-    <div id="chatbox" class="bg-black p-4 h-64 overflow-y-auto rounded mb-4 text-left"></div>
-    <input id="userInput" type="text" placeholder="Ask legal question..." class="w-full p-3 text-black rounded">
-    <button onclick="sendMessage()" class="mt-3 bg-white text-black px-6 py-2 rounded">Send</button>
+<!-- Side Panel -->
+<section id="consult" class="py-16 px-6">
+  <div class="grid md:grid-cols-2 gap-8">
+
+    <!-- AI Chat -->
+    <div class="glass p-6 rounded-2xl">
+      <h2 class="text-2xl font-bold mb-4">AI Legal Assistant 🤖</h2>
+      <div id="chatbox" class="bg-black p-3 h-56 overflow-y-auto rounded mb-3"></div>
+      <input id="userInput" type="text" placeholder="Ask your legal question..." class="w-full p-2 text-black rounded">
+      <button onclick="sendMessage()" class="mt-2 bg-blue-600 px-4 py-2 rounded">Send</button>
+    </div>
+
+    <!-- Google Calendar Booking -->
+    <div class="glass p-6 rounded-2xl">
+      <h2 class="text-2xl font-bold mb-4">Book Appointment 📅</h2>
+      <iframe src="https://calendar.google.com/calendar/appointments/schedules/https://calendar.app.google/7LP2ugn9fZnHYyWq6" class="w-full h-64 rounded bg-white"></iframe>
+      <p class="text-sm text-gray-400 mt-2">(Replace with your Google Appointment Schedule link)</p>
+    </div>
+
   </div>
 </section>
 
@@ -57,8 +72,8 @@ function sendMessage(){
   let chatbox = document.getElementById('chatbox');
   chatbox.innerHTML += `<p><b>You:</b> ${input}</p>`;
 
-  let reply = "Please contact for detailed legal advice.";
-  if(input.toLowerCase().includes('divorce')) reply = "Divorce cases require proper legal filing. Book consultation.";
+  let reply = "Please book a consultation for proper legal advice.";
+  if(input.toLowerCase().includes('divorce')) reply = "Divorce matters require legal filing and consultation.";
   if(input.toLowerCase().includes('property')) reply = "Property disputes need document verification.";
 
   chatbox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
@@ -66,17 +81,11 @@ function sendMessage(){
 }
 </script>
 
-<!-- Booking -->
-<section id="booking" class="py-16 text-center">
-  <h2 class="text-3xl font-bold mb-6">Book Appointment 📅</h2>
-  <iframe src="https://calendly.com/chambersofsarthakdutta" class="w-full max-w-2xl mx-auto h-96 rounded-xl"></iframe>
-</section>
-
 <!-- WhatsApp -->
-<a href="https://wa.me/919999454893" target="_blank" class="fixed bottom-6 right-6 bg-green-500 px-4 py-3 rounded-full">💬</a>
+<a href="https://wa.me/919999454893" target="_blank" class="fixed bottom-6 right-6 bg-green-500 px-4 py-3 rounded-full shadow-lg hover:scale-110 transition">💬</a>
 
 <!-- Footer -->
-<footer class="text-center p-6">
+<footer class="text-center p-6 text-gray-400">
   <p>© 2026 Adv. Sarthak Dutta</p>
   <a href="https://www.instagram.com/chambersofsarthakdutta?igsh=aXhubzh4bzlybGxv&utm_source=qr" target="_blank">Instagram</a>
 </footer>
